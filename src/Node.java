@@ -2,19 +2,20 @@ package src;
 
 import java.util.LinkedList;
 
-public class VertexNode {
+public class Node {
     protected String key;
-    protected LinkedList<AdjacentNode> adj;
+    protected LinkedList<Node> adj;
     
-    public VertexNode(){
-        key = null;
-        adj = new LinkedList<>();
-    }
-    public VertexNode(String key){
+    public Node(String key){
         this.key = key;
         adj = new LinkedList<>();
     }
     // fucntions to get data in LinkedList for AdjacentNode
     // for(tmp = head; tmp.next != tail; tmp = tmp.next);
-    
+    public void AddAdjacentNode(Node adj){
+        this.adj.add(adj);
+    }
+    public LinkedList<Node> getAdjacentNode(){
+        return adj;
+    }
 }

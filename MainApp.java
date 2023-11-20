@@ -2,11 +2,13 @@ import java.io.FileReader;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import src.Graph;
+
 /**
  * MainApp
  */
 public class MainApp {
-    static LinkedList<String> graph = new LinkedList<String>();
+    static Graph graph = new Graph();
 
     public static void main(String[] args) {
         
@@ -18,7 +20,7 @@ public class MainApp {
         }
     }
     public static void DisplayData(){
-
+        graph.printGraph();
     }
     public static void GenerateData(FileReader fr){
         try(Scanner sc = new Scanner(fr)){
@@ -26,9 +28,9 @@ public class MainApp {
                 String[] data = sc.nextLine().split(" ");
                 
                 if(data.length > 1){
-                    
+                    graph.addEdge(data[0], data[2]);
                 }else{
-                    graph.add(data[0]);
+                    graph.addNode(data[0]);
                 }
             }
             System.out.println("Data has been loaded to the list");
