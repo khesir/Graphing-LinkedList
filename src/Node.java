@@ -10,8 +10,6 @@ public class Node {
         this.key = key;
         adj = new LinkedList<>();
     }
-    // fucntions to get data in LinkedList for AdjacentNode
-    // for(tmp = head; tmp.next != tail; tmp = tmp.next);
     public void AddAdjacentNode(Node adj){
         this.adj.add(adj);
     }

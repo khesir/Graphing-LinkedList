@@ -1,5 +1,4 @@
 import java.io.FileReader;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 import src.Graph;
@@ -28,7 +27,7 @@ public class MainApp {
                 String[] data = sc.nextLine().split(" ");
                 
                 if(data.length > 1){
-                    graph.addEdge(data[0], data[2]);
+                    graph.addEdge(data[0], data[1]);
                 }else{
                     graph.addNode(data[0]);
                 }

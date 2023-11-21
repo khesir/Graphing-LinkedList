@@ -1,12 +1,14 @@
 package src;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Graph {
-    LinkedList<Node> nodes;
-
+    private LinkedList<Node> nodes;
+    private ArrayList<String> edgesData;
     public Graph(){
         nodes = new LinkedList<>();
+        edgesData = new ArrayList<>();
     }
     public void addNode(String data){
         nodes.add(new Node(data));
@@ -16,6 +18,7 @@ public class Graph {
         Node destNode = findNode(dest);
 
         if(srcNode != null && destNode != null){
+            edgesData.add(src+dest);
             srcNode.AddAdjacentNode(destNode);
             destNode.AddAdjacentNode(srcNode);
         }
@@ -29,11 +32,44 @@ public class Graph {
         }
         return null;
     }
+
     public void printGraph() {
-        for (Node node : nodes) {
-            System.out.print("Node " + node.key + " is connected to: ");
-            for (Node neighbor : node.getAdjacentNode()) {
-                System.out.print(neighbor.key + " ");
+        System.out.println("Vertix Nodes");
+        System.out.print("   ");
+        for(Node node : nodes){
+            System.out.print(node.key + "  ");
+        }
+        System.out.println();
+        for(Node node: nodes){
+            System.out.print(node.key+"  ");
+            LinkedList<Node> adj = node.getAdjacentNode(); 
+            for(Node node2 : nodes){
+                if(adj.contains(node2)){
+                    System.out.print("1  ");
+                }
+                else{
+                    System.out.print("0  ");
+                }
+            }
+            System.out.println();
+        }
+        System.out.println("==============================================");
+        System.out.println("Edges");
+        System.out.print("   ");
+        for(String edges : edgesData){
+            System.out.print(edges + "  ");
+        }
+        System.out.println();
+        for(Node node: nodes){
+            System.out.print(node.key+"  ");
+            
+            for (String edge : edgesData) {
+                if(edge.contains(node.key)){
+                    System.out.print("1   ");
+                }
+                else{
+                    System.out.print("0   ");
+                }
             }
             System.out.println();
         }
