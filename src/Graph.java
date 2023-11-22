@@ -20,9 +20,41 @@ public class Graph {
         if(srcNode != null && destNode != null){
             edgesData.add(src+dest);
             srcNode.AddAdjacentNode(destNode);
-            destNode.AddAdjacentNode(srcNode);
+            //destNode.AddAdjacentNode(srcNode);
         }
     }
+    public void showNodes(){
+        for(Node node : nodes){
+            System.out.print(node.key + " ");
+            for(Node adj : node.getAdjacentNode()){
+                System.out.print(adj.key + " ");
+            }
+            System.out.println();
+        }
+    }
+    public void DFS(Node node, StringBuilder st){
+        for(Node adj : node.getAdjacentNode()){
+            if(adj.isVisited() == false){
+                st.append(adj.key + "-");
+                adj.setVisit(true);
+                DFS(adj,st);
+            }
+        }
+    }
+    public void depthFirstSearch(){
+        StringBuilder st = new StringBuilder();
+        
+        for(Node node : nodes){
+            if(node.isVisited() == false){
+                st.append(node.key + "-");
+                node.setVisit(true);
+            }
+            DFS(node, st);
+        }
+        st.deleteCharAt(st.length()-1);
+        System.out.println(st.toString());
+    }
+    
 
     private Node findNode(String data){
         for(Node node : nodes){

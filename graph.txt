@@ -2,19 +2,16 @@ A
 B
 C
 D
-E
-F
 G
 H
-I
 J
+F
+E
 A B
-B C
-C D
+A C
+J E
+C J
 D E
-E F
-F G
-G H
-H I
-I J
-J A
+B D
+D F
+F A

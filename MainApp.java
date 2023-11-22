@@ -19,7 +19,7 @@ public class MainApp {
         }
     }
     public static void DisplayData(){
-        graph.printGraph();
+        graph.depthFirstSearch();
     }
     public static void GenerateData(FileReader fr){
         try(Scanner sc = new Scanner(fr)){
