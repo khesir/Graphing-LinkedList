@@ -18,8 +18,13 @@ public class MainApp {
             System.out.println("Exception: "+ e);
         }
     }
-    public static void DisplayData(){
+    public static void DisplayData() throws StringIndexOutOfBoundsException{
         //graph.printGraph();
+        graph.showNodes();
+        System.out.println("BreadthFirst");
+        graph.breadthFirstSearch();
+        System.out.println();
+        System.out.println("DepthFirst");
         graph.depthFirstSearch();
     }
     public static void GenerateData(FileReader fr){
@@ -33,7 +38,7 @@ public class MainApp {
                     graph.addNode(data[0]);
                 }
             }
-            System.out.println("Data has been loaded to the list");
+            //System.out.println("Data has been loaded to the list");
         } catch(Exception e){
             System.out.println("Exception: "+ e);
         }

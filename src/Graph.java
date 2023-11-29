@@ -2,6 +2,7 @@ package src;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class Graph {
     private LinkedList<Node> nodes;
@@ -43,7 +44,7 @@ public class Graph {
     }
     public void depthFirstSearch(){
         StringBuilder st = new StringBuilder();
-        
+        resetVisitVal();
         for(Node node : nodes){
             if(node.isVisited() == false){
                 st.append(node.key + "-");
@@ -54,7 +55,36 @@ public class Graph {
         st.deleteCharAt(st.length()-1);
         System.out.println(st.toString());
     }
-    
+    public void breadthFirstSearch(){
+        StringBuilder st = new StringBuilder();
+        Queue<Node> q = new LinkedList<>();
+        Node v;
+        resetVisitVal();
+        for(Node node: nodes){
+            if(node.isVisited() == false)
+            {
+                node.visit = true;
+                q.add(node);
+                while(!q.isEmpty()){
+                    v = q.remove();
+                    st.append(v.key + "-");
+                    for(Node adj: v.getAdjacentNode()){
+                        if(adj.isVisited() == false){
+                            adj.setVisit(true);
+                            q.add(adj);
+                        }
+                    }
+                }
+            }
+        }
+        st.deleteCharAt(st.length()-1);
+        System.out.println(st.toString());
+    }
+    private void resetVisitVal(){
+        for(Node node : nodes){
+            node.setVisit(false);
+        }
+    }
 
     private Node findNode(String data){
         for(Node node : nodes){
